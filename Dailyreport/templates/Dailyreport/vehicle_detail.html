@@ -1,0 +1,12 @@
+
+{% block content %}
+  <h1>{{ object.name }} - {{ object.make }} {{ object.model }}</h1>
+  <h2>Readings:</h2>
+  <ul>
+    {% for reading in object.vehicle_reading.all %}
+      <li><a href="{% url 'vehicle_reading_detail' reading.pk %}">{{ reading.date }} - {{ reading.meter_reading }} km - {{ reading.work_accomplished }}</a></li>
+    {% empty %}
+      <li>No readings yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
